@@ -1,26 +1,382 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #f2f4f9;
+  --border: #e3e7f0;
+  --border-strong: #cfd6e6;
+  --text: #121826;
+  --text-muted: #5a657d;
+  --text-faint: #8b94a8;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --brand: #2a4fd7;
+  --brand-dark: #1d3bad;
+  --brand-light: #eaeffd;
+  --on-brand: #ffffff;
+  --frame-opacity: 0.09;
+
+  --blue: #2a4fd7;
+  --violet: #7a3fd4;
+  --emerald: #0f9b6c;
+  --orange: #e2731a;
+  --rose: #d6336c;
+  --cyan: #0e8fa8;
+  --amber: #c98a06;
+  --indigo: #4b45c9;
+
+  --good: #0f9b6c;
+  --warn: #c98a06;
+  --bad: #d63a3a;
+
+  --shadow-sm: 0 1px 2px rgba(18, 24, 38, 0.06);
+  --shadow: 0 4px 16px rgba(18, 24, 38, 0.08);
+  --shadow-lg: 0 12px 34px rgba(18, 24, 38, 0.12);
+
+  --radius: 14px;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --bg: #0d1017;
+    --surface: #151a24;
+    --surface-2: #1c2230;
+    --border: #262e3d;
+    --border-strong: #374154;
+    --text: #e8ecf4;
+    --text-muted: #9aa5ba;
+    --text-faint: #6f7a90;
+
+    --brand: #7d9bff;
+    --brand-dark: #5f82ff;
+    --brand-light: #1a2338;
+    --on-brand: #0d1017;
+    --frame-opacity: 0.13;
+
+    --blue: #7d9bff;
+    --violet: #b28cf5;
+    --emerald: #43c99a;
+    --orange: #f2a259;
+    --rose: #f0709e;
+    --cyan: #4fc2da;
+    --amber: #e8bb4e;
+    --indigo: #8f8bf0;
+
+    --good: #43c99a;
+    --warn: #e8bb4e;
+    --bad: #f07272;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    --shadow-lg: 0 12px 34px rgba(0, 0, 0, 0.55);
   }
 }
 
+:root[data-theme="dark"] {
+  --bg: #0d1017;
+  --surface: #151a24;
+  --surface-2: #1c2230;
+  --border: #262e3d;
+  --border-strong: #374154;
+  --text: #e8ecf4;
+  --text-muted: #9aa5ba;
+  --text-faint: #6f7a90;
+
+  --brand: #7d9bff;
+  --brand-dark: #5f82ff;
+  --brand-light: #1a2338;
+  --on-brand: #0d1017;
+
+  --blue: #7d9bff;
+  --violet: #b28cf5;
+  --emerald: #43c99a;
+  --orange: #f2a259;
+  --rose: #f0709e;
+  --cyan: #4fc2da;
+  --amber: #e8bb4e;
+  --indigo: #8f8bf0;
+
+  --good: #43c99a;
+  --warn: #e8bb4e;
+  --bad: #f07272;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 34px rgba(0, 0, 0, 0.55);
+}
+
+/* ——— Градиентлар ———
+   Ранглар иккала мавзуда ҳам бир хил: улар ҳамиша оқ матн остида туради. */
+:root {
+  --grad-blue: linear-gradient(to bottom right, #3b82f6, #22d3ee);
+  --grad-violet: linear-gradient(to bottom right, #8b5cf6, #e879f9);
+  --grad-emerald: linear-gradient(to bottom right, #10b981, #2dd4bf);
+  --grad-orange: linear-gradient(to bottom right, #f97316, #fbbf24);
+  --grad-rose: linear-gradient(to bottom right, #f43f5e, #f472b6);
+  --grad-cyan: linear-gradient(to bottom right, #0ea5e9, #818cf8);
+  --grad-amber: linear-gradient(to bottom right, #d97706, #facc15);
+  --grad-indigo: linear-gradient(to bottom right, #4f46e5, #a78bfa);
+  --grad-slate: linear-gradient(to bottom right, #475569, #94a3b8);
+  --grad-brand: linear-gradient(to bottom right, #1b5ef5, #0ea5e9);
+  --grad-hero: linear-gradient(to bottom right, #173cb6 0%, #1b5ef5 45%, #0ea5e9 100%);
+  --grad-footer: linear-gradient(to right, #19378f, #173cb6, #0f172a);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-light: var(--brand-light);
+  --color-on-brand: var(--on-brand);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --radius-card: var(--radius);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html {
+  background: var(--bg);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Саҳифанинг чап ва ўнг четидаги нақшли ҳошия — оригиналдаги ўлчамлар:
+   эни 72px, нақш плиткаси ҳам 72px (бир нақш ҳошия энига аниқ сиғади).
+   Ранг иккала мавзуда ҳам бир хил, фақат шаффофлик ўзгаради.
+   Нақш файли оқ, шунинг учун у маска сифатида ишлатилади. */
+body::before,
+body::after {
+  content: "";
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 72px;
+  z-index: -1;
+  pointer-events: none;
+  background-color: #1b5ef5;
+  opacity: var(--frame-opacity);
+  -webkit-mask-image: url("/naqsh.png");
+  mask-image: url("/naqsh.png");
+  -webkit-mask-size: 72px;
+  mask-size: 72px;
+  -webkit-mask-repeat: repeat;
+  mask-repeat: repeat;
+}
+
+body::before {
+  left: 0;
+}
+
+body::after {
+  right: 0;
+}
+
+@media (min-width: 1440px) {
+  body::before,
+  body::after {
+    display: block;
+  }
+}
+
+/* Саҳифа тепасидаги ингичка градиент чизиқ */
+.top-bar {
+  height: 6px;
+  width: 100%;
+  flex-shrink: 0;
+  background: linear-gradient(to right, #1449e1, #327eff, #38bdf8);
+}
+
+/* ——— умумий ёрдамчи синфлар ——— */
+
+.container-x {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-hover {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+  border-color: var(--border-strong);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease,
+    opacity 0.15s ease;
+  border: 1px solid transparent;
+  line-height: 1.2;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--brand);
+  color: var(--on-brand);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--brand-dark);
+}
+
+.btn-ghost {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+}
+
+.btn-soft {
+  background: var(--brand-light);
+  color: var(--brand);
+}
+
+.btn-soft:hover:not(:disabled) {
+  filter: brightness(0.96);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.input {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 15px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus {
+  border-color: var(--brand);
+}
+
+.input::placeholder {
+  color: var(--text-faint);
+}
+
+.hero-grad {
+  background: var(--grad-hero);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-pop {
+  animation: pop-in 0.22s ease-out;
+}
+
+@keyframes shake-x {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.animate-shake {
+  animation: shake-x 0.3s ease-in-out;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
 }
