@@ -9,20 +9,18 @@ export type Theme = "light" | "dark";
 let current: Theme | null = null;
 const listeners = new Set<() => void>();
 
+/**
+ * Сукут бўйича — ёруғ мавзу. Операцион тизим созламаси атайин
+ * ҳисобга олинмайди: қоронғи мавзу фақат фойдаланувчи ўзи танлаганда ёқилади.
+ */
 function detect(): Theme {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === "dark" || saved === "light") return saved;
+    if (saved === "dark") return "dark";
   } catch {
     /* эътиборсиз */
   }
-  try {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  } catch {
-    return "light";
-  }
+  return "light";
 }
 
 function subscribe(cb: () => void): () => void {

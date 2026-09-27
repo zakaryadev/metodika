@@ -35,7 +35,7 @@ const themeScript = `
 (function(){
   try {
     var s = localStorage.getItem('metodika:theme');
-    var d = s ? s === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var d = s === 'dark';
     document.documentElement.dataset.theme = d ? 'dark' : 'light';
     var sc = localStorage.getItem('metodika:script');
     if (sc === 'lat' || sc === 'cyr') document.documentElement.dataset.script = sc;

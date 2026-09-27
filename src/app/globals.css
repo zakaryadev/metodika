@@ -36,42 +36,9 @@
   --radius: 14px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0d1017;
-    --surface: #151a24;
-    --surface-2: #1c2230;
-    --border: #262e3d;
-    --border-strong: #374154;
-    --text: #e8ecf4;
-    --text-muted: #9aa5ba;
-    --text-faint: #6f7a90;
 
-    --brand: #7d9bff;
-    --brand-dark: #5f82ff;
-    --brand-light: #1a2338;
-    --on-brand: #0d1017;
-    --frame-opacity: 0.13;
-
-    --blue: #7d9bff;
-    --violet: #b28cf5;
-    --emerald: #43c99a;
-    --orange: #f2a259;
-    --rose: #f0709e;
-    --cyan: #4fc2da;
-    --amber: #e8bb4e;
-    --indigo: #8f8bf0;
-
-    --good: #43c99a;
-    --warn: #e8bb4e;
-    --bad: #f07272;
-
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-    --shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
-    --shadow-lg: 0 12px 34px rgba(0, 0, 0, 0.55);
-  }
-}
-
+/* Тёмная тема включается только явным выбором пользователя.
+   Системная настройка ОС намеренно не учитывается: по умолчанию — светлая. */
 :root[data-theme="dark"] {
   --bg: #0d1017;
   --surface: #151a24;
@@ -86,6 +53,7 @@
   --brand-dark: #5f82ff;
   --brand-light: #1a2338;
   --on-brand: #0d1017;
+  --frame-opacity: 0.13;
 
   --blue: #7d9bff;
   --violet: #b28cf5;
