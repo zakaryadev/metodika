@@ -17,7 +17,7 @@ export default function HuquqiyBazaPage() {
     if (!q) return legalDocs;
     const qLat = toLatin(q);
     return legalDocs.filter((d) => {
-      const hay = `${d.title} ${d.summary} ${d.kind} ${d.number}`.toLowerCase();
+      const hay = `${d.title} ${d.summary} ${d.kind} ${d.number ?? ""}`.toLowerCase();
       return hay.includes(q) || toLatin(hay).includes(qLat);
     });
   }, [query]);
@@ -76,12 +76,25 @@ export default function HuquqiyBazaPage() {
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="chip">{t(d.kind)}</span>
-                    <span
-                      className="text-[12px] font-bold"
-                      style={{ color: "var(--text-faint)" }}
-                    >
-                      {t(d.number)} · {t(d.date)}
-                    </span>
+                    {d.number && d.date ? (
+                      <span
+                        className="text-[12px] font-bold"
+                        style={{ color: "var(--text-faint)" }}
+                      >
+                        {t(d.number)} · {t(d.date)}
+                      </span>
+                    ) : (
+                      <span
+                        className="rounded-full px-2 py-0.5 text-[11px] font-bold"
+                        style={{
+                          background:
+                            "color-mix(in srgb, var(--warn) 16%, transparent)",
+                          color: "var(--warn)",
+                        }}
+                      >
+                        {t("реквизитлар аниқланмаган")}
+                      </span>
+                    )}
                   </div>
                   <h2 className="mt-2 font-bold text-[15.5px] leading-snug">
                     {t(d.title)}

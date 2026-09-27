@@ -97,12 +97,15 @@ export type LegalDoc = {
   slug: string;
   title: string;
   kind: string;
-  number: string;
-  date: string;
+  /** Ҳужжат рақами — lex.uz дан текширилган бўлсагина тўлдирилади */
+  number?: string;
+  date?: string;
   summary: string;
   /** Профилактика ишига тегишли асосий моддалар/қоидалар */
   points: string[];
   url?: string;
+  /** true — рақам, сана ва ҳавола ҳали текширилмаган */
+  needsCitation?: boolean;
 };
 
 export type Author = {

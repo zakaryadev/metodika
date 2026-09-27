@@ -19,12 +19,14 @@ export function LegalView({ slug }: { slug: string }) {
       <div className="mt-4">
         <div className="flex flex-wrap items-center gap-2">
           <span className="chip">{t(d.kind)}</span>
-          <span
-            className="text-[12.5px] font-bold"
-            style={{ color: "var(--text-faint)" }}
-          >
-            {t(d.number)} · {t(d.date)}
-          </span>
+          {d.number && d.date && (
+            <span
+              className="text-[12.5px] font-bold"
+              style={{ color: "var(--text-faint)" }}
+            >
+              {t(d.number)} · {t(d.date)}
+            </span>
+          )}
         </div>
         <h1 className="mt-3 text-xl md:text-2xl font-extrabold leading-tight">
           {t(d.title)}
@@ -35,6 +37,25 @@ export function LegalView({ slug }: { slug: string }) {
         >
           {t(d.summary)}
         </p>
+
+        {d.needsCitation && (
+          <div
+            className="mt-4 flex gap-3 rounded-xl px-4 py-3.5"
+            style={{
+              background: "color-mix(in srgb, var(--warn) 12%, transparent)",
+            }}
+          >
+            <Icon
+              name="lightbulb"
+              className="w-5 h-5 shrink-0 mt-0.5"
+              />
+            <p className="text-[13.5px] leading-relaxed">
+              {t(
+                "Ушбу ҳужжатнинг рақами, санаси ва расмий ҳаволаси ҳали текширилмаган, шунинг учун кўрсатилмаган. Қуйидаги мазмун танишиш учун берилган — аниқ реквизитларни lex.uz дан текшириб қўйинг.",
+              )}
+            </p>
+          </div>
+        )}
       </div>
 
       <section className="card p-6 mt-6">
@@ -90,7 +111,7 @@ export function LegalView({ slug }: { slug: string }) {
         style={{ color: "var(--text-faint)" }}
       >
         {t(
-          "Эслатма: ҳужжатга ўзгартириш ва қўшимчалар киритилган бўлиши мумкин. Расмий ва долзарб матнни lex.uz сайтидан текшириб кўринг.",
+          "Эслатма: ҳужжатларга ўзгартириш ва қўшимчалар киритилган бўлиши мумкин. Расмий ва долзарб матнни ҳамиша lex.uz сайтидан текшириб кўринг.",
         )}
       </p>
     </div>
