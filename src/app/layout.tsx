@@ -28,6 +28,13 @@ export const metadata: Metadata = {
     "profilaktika",
     "voyaga yetmaganlar",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 /** Саҳифа юкланишидан олдин мавзуни ўрнатади — «оқ ялт этиш»нинг олдини олади */
