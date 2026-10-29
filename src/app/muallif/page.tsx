@@ -43,7 +43,6 @@ export default function MuallifPage() {
   const a = author;
 
   const contacts = [
-    { icon: "mail", label: a.email, href: `mailto:${a.email}` },
     { icon: "phone", label: a.phone, href: `tel:${a.phone.replace(/\s/g, "")}` },
     { icon: "send", label: "Telegram", href: a.telegram },
   ];
